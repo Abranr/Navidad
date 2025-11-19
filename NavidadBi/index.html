@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinoNavidad Elegante - Galería de Mascotas Festivas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="snowflakes" id="snowflakes"></div>
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="selection-message" id="selectionMessage">
+        <h3>🎅 ¡Felicitaciones! 🎄</h3>
+        <p id="messageText"></p>
+    </div>
+
+    <div class="photo-editor" id="photoEditor">
+        <div class="editor-container">
+            <h2 class="editor-title">✨ Editor Navideño ✨</h2>
+            
+            <div class="canvas-container">
+                <canvas id="photoCanvas"></canvas>
+                <div class="processing-indicator" id="processingIndicator">
+                    <div class="spinner"></div>
+                    <p>Procesando imagen...</p>
+                </div>
+            </div>
+            
+            <button class="remove-bg-btn" id="removeBackgroundBtn">
+                <span>🪄</span> Aplicar Magia Navideña
+            </button>
+            
+            <div class="editor-panel">
+                <h3 class="panel-title">
+                    <span>🎄</span> Fondos Navideños
+                </h3>
+                <div class="backgrounds-grid" id="christmasBackgrounds">
+                    <div class="background-btn active" data-background="none">
+                        <div class="background-name">Sin Fondo</div>
+                    </div>
+                    <div class="background-btn" data-background="christmas-tree">
+                        <div class="background-name">Árbol Navideño</div>
+                    </div>
+                    <div class="background-btn" data-background="snow-landscape">
+                        <div class="background-name">Paisaje Nevado</div>
+                    </div>
+                    <div class="background-btn" data-background="fireplace">
+                        <div class="background-name">Chimenea</div>
+                    </div>
+                    <div class="background-btn" data-background="gifts">
+                        <div class="background-name">Regalos</div>
+                    </div>
+                    <div class="background-btn" data-background="santa-workshop">
+                        <div class="background-name">Taller de Santa</div>
+                    </div>
+                    <div class="background-btn" data-background="christmas-livingroom">
+                        <div class="background-name">Sala Navideña</div>
+                    </div>
+                    <div class="background-btn" data-background="winter-forest">
+                        <div class="background-name">Bosque Invernal</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="editor-panel">
+                <h3 class="panel-title">
+                    <span>✨</span> Filtros Navideños
+                </h3>
+                <div class="effects-grid">
+                    <div class="effect-btn active" data-effect="none">Normal</div>
+                    <div class="effect-btn" data-effect="warm">Cálido Navideño</div>
+                    <div class="effect-btn" data-effect="cool">Invierno Frío</div>
+                    <div class="effect-btn" data-effect="vintage">Vintage</div>
+                    <div class="effect-btn" data-effect="festive">Festivo</div>
+                    <div class="effect-btn" data-effect="snow">Efecto Nieve</div>
+                    <div class="effect-btn" data-effect="golden">Dorado</div>
+                    <div class="effect-btn" data-effect="candy">Caramelo</div>
+                </div>
+            </div>
+
+            <div class="editor-panel">
+                <h3 class="panel-title">
+                    <span>🎨</span> Ajustes de Imagen
+                </h3>
+                <div class="slider-container">
+                    <div class="slider-label">
+                        <span>Brillo</span>
+                        <span id="brightnessValue">100%</span>
+                    </div>
+                    <input type="range" min="0" max="200" value="100" class="slider" id="brightnessSlider">
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">
+                        <span>Contraste</span>
+                        <span id="contrastValue">100%</span>
+                    </div>
+                    <input type="range" min="0" max="200" value="100" class="slider" id="contrastSlider">
+                </div>
+                <div class="slider-container">
+                    <div class="slider-label">
+                        <span>Saturación</span>
+                        <span id="saturationValue">100%</span>
+                    </div>
+                    <input type="range" min="0" max="200" value="100" class="slider" id="saturationSlider">
+                </div>
+            </div>
+            
+            <div class="editor-panel">
+                <h3 class="panel-title">
+                    <span>🎁</span> Stickers Navideños
+                </h3>
+                <div class="christmas-stickers" id="christmasStickers">
+                    <div class="sticker" data-emoji="🎄">🎄</div>
+                    <div class="sticker" data-emoji="🎅">🎅</div>
+                    <div class="sticker" data-emoji="🦌">🦌</div>
+                    <div class="sticker" data-emoji="❄️">❄️</div>
+                    <div class="sticker" data-emoji="⭐">⭐</div>
+                    <div class="sticker" data-emoji="🎁">🎁</div>
+                    <div class="sticker" data-emoji="🔔">🔔</div>
+                    <div class="sticker" data-emoji="🕯️">🕯️</div>
+                    <div class="sticker" data-emoji="🌟">🌟</div>
+                    <div class="sticker" data-emoji="🦕">🦕</div>
+                    <div class="sticker" data-emoji="🦖">🦖</div>
+                    <div class="sticker" data-emoji="🎿">🎿</div>
+                    <div class="sticker" data-emoji="⛷️">⛷️</div>
+                    <div class="sticker" data-emoji="🧣">🧣</div>
+                    <div class="sticker" data-emoji="☃️">☃️</div>
+                    <div class="sticker" data-emoji="🛷">🛷</div>
+                </div>
+            </div>
+            
+            <div class="editor-buttons">
+                <button class="editor-btn save-btn" id="saveEditedPhoto">Guardar Foto</button>
+                <button class="editor-btn cancel-btn" id="cancelEdit">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🎄 DinoNavidad Elegante 🦕</h1>
+            <p class="subtitle">Galería de Mascotas con Magia Festiva</p>
+            <div id="countdown"></div>
+        </header>
+
+        <div class="upload-section">
+            <h2>✨ Agregar Nueva Mascota</h2>
+            <div class="limit-message" id="limitMessage">
+                ⚠️ Has alcanzado el límite de 4 mascotas. Elimina una mascota existente para agregar una nueva.
+            </div>
+            <form id="petForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="petName">Nombre de la Mascota *</label>
+                        <input type="text" id="petName" required placeholder="Ej: Rex Navideño">
+                    </div>
+                    <div class="form-group">
+                        <label for="petType">Tipo *</label>
+                        <select id="petType" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Pájaro">Pájaro</option>
+                            <option value="Dinosaurio">Dinosaurio</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="petAge">Años *</label>
+                        <input type="number" id="petAge" required placeholder="Ej: 5" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="petDescription">Descripción *</label>
+                    <textarea id="petDescription" required placeholder="Describe a tu mascota navideña..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Imagen de la Mascota</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="petImage" accept="image/*">
+                        <label for="petImage" class="file-input-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Sube una foto de tu mascota</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="add-btn" id="addBtn">
+                    <i class="fas fa-plus-circle"></i> Agregar Mascota
+                </button>
+            </form>
+        </div>
+
+        <div id="petsGallery" class="pets-gallery"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
